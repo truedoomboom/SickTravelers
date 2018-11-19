@@ -47,7 +47,7 @@ public class TravelManager {
         System.out.println();
 
         //Places where everyone is traveling to
-        for(Teammate teammate : teammates) {
+        for (Teammate teammate : teammates) {
             System.out.println(teammate.getName() + " will be in " + teammate.getOfficeLocation(day + 1) + " tomorrow.");
         }
         System.out.println();
@@ -119,10 +119,12 @@ public class TravelManager {
                 teammate.setState("HEALTHY");
                 teammates.add(teammate);
                 break;
-            default:
+            case "HEALTHY":
                 teammates.remove(teammate);
                 teammate.setState("SICK");
                 teammates.add(teammate);
+                break;
+            default:
                 break;
         }
     }

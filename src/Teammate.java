@@ -19,6 +19,9 @@ public class Teammate {
     }
 
     public void setState(String updatedState) {
+        if (!updatedState.equals("SICK") && !updatedState.equals("HEALTHY") && !updatedState.equals("RECOVERING")) {
+            throw new IllegalArgumentException("Please input a valid state.");
+        }
         state = updatedState;
     }
 
