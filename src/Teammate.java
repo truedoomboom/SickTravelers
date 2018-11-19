@@ -1,14 +1,13 @@
-import java.util.List;
 
 public class Teammate {
     private String name;
     private String state;
-    private List<String> itenary;
+    private String[] travelItinerary;
 
-    public Teammate(String name, String state, List<String> itenary) {
+    public Teammate(String name, String state, String[] travelItinerary) {
         this.name = name;
         this.state = state;
-        this.itenary = itenary;
+        this.travelItinerary = travelItinerary;
     }
 
     public String getName() {
@@ -23,8 +22,8 @@ public class Teammate {
         state = updatedState;
     }
 
-    public String getOffice(int day) {
-        return itenary.get(day % itenary.size());
+    public String getOfficeLocation(int day) {
+        return travelItinerary[day % travelItinerary.length];
     }
 
     public boolean isContagious() {

@@ -21,11 +21,11 @@ public class TravelManager {
             String name = info[0];
             String state = info[1];
 
-            List<String> itenary = new ArrayList<>();
+            String[] travelItinerary = new String[info.length - 2];
             for (int j = 2; j < info.length; j++) {
-                itenary.add(info[j]);
+                travelItinerary[j - 2] = info[j];
             }
-            teammates.add(new Teammate(name, state, itenary));
+            teammates.add(new Teammate(name, state, travelItinerary));
         }
 
         // Initialize the state
@@ -48,7 +48,7 @@ public class TravelManager {
 
         //Places where everyone is traveling to
         for(Teammate teammate : teammates) {
-            System.out.println(teammate.getName() + " will be in " + teammate.getOffice(day + 1) + " tomorrow.");
+            System.out.println(teammate.getName() + " will be in " + teammate.getOfficeLocation(day + 1) + " tomorrow.");
         }
         System.out.println();
     }
@@ -98,11 +98,11 @@ public class TravelManager {
             }
 
             List<Teammate> team = new ArrayList<>();
-            if (officeToTeammates.containsKey(teammate.getOffice(day))) {
-                team = officeToTeammates.get(teammate.getOffice(day));
+            if (officeToTeammates.containsKey(teammate.getOfficeLocation(day))) {
+                team = officeToTeammates.get(teammate.getOfficeLocation(day));
             }
             team.add(teammate);
-            officeToTeammates.put(teammate.getOffice(day), team);
+            officeToTeammates.put(teammate.getOfficeLocation(day), team);
         }
     }
 
